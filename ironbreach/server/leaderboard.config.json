@@ -1,0 +1,9 @@
+{
+  "identity": "guest",
+  "boards": [
+    {
+      "id": "rift-protocol-v1",
+      "rulesVersion": "v1"
+    }
+  ]
+}

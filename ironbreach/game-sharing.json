@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "title": "B.R.T. — Brazilian Response Team",
+  "description": "FPS 3D brasileiro em primeira pessoa, com mapas maiores no estilo clássico de FPS, três rotas táticas e uma operação inspirada no Morro da Rocinha. O lobby por convite fica preparado para o servidor online.",
+  "defaultCaptions": {
+    "x": "B.R.T. — Brazilian Response Team. Três rotas, oito ondas e uma operação no Morro da Rocinha. Você segura o morro?",
+    "facebook": "B.R.T. é um FPS brasileiro que roda no browser: mapas grandes, becos, lajes, combate de esquadra e ranking de estilo.",
+    "reddit": "B.R.T. — um FPS de ondas inspirado no Brasil, com mapas maiores no ritmo clássico de Counter-Strike 1.6 e lobby por convite preparado.",
+    "discord": "B.R.T. — Brazilian Response Team. Operação Rocinha, três rotas e convite de esquadra em preparação."
+  },
+  "assets": {
+    "og": "assets/share/og-brt.png",
+    "favicon": "assets/share/favicon-brt-final-clean.png"
+  }
+}

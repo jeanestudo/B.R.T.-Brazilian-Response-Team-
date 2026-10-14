@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#0d0a08" />
+    <title>B.R.T. — Brazilian Response Team</title>
+    <meta name="description" content="B.R.T. — Brazilian Response Team. FPS 3D brasileiro em primeira pessoa, com mapas grandes, três rotas táticas e operação inspirada no Morro da Rocinha." />
+    <link rel="icon" href="./assets/share/favicon.png" type="image/png" />
+    <link rel="preload" href="./assets/ui/loading_bg.webp" as="image" fetchpriority="high" />
+    <link rel="preload" href="./fonts/ChakraPetch-700.latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/Figtree-VF.subset.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      /* Instant first paint before any JS: the remix loading art stands in for the boot screen. */
+      html, body { margin: 0; height: 100%; background: #0d0a08; overflow: hidden; }
+      #boot-ph { position: fixed; inset: 0; background: #0d0a08 url('./assets/ui/loading_bg_tiny.webp') center / cover; filter: blur(10px); transform: scale(1.05); }
+    </style>
+</head>
+  <body>
+    <div id="boot-ph"></div>
+    <canvas id="game"></canvas>
+    <div id="ui"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

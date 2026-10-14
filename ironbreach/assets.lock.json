@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "groups": {
+    "share": {
+      "name": "Share",
+      "order": 10
+    }
+  },
+  "bundles": {},
+  "assets": {
+    "assets/share/favicon-brt-final-clean.png": {
+      "path": "assets/share/favicon-brt-final-clean.png",
+      "sha256": "sha256:2a189a84194cc8a7ee1cf1a0496473aa9df23d53ed325d99c06d7df8e5034461",
+      "size": 7426,
+      "assetType": "image",
+      "groupId": "share"
+    },
+    "assets/share/favicon.png": {
+      "path": "assets/share/favicon.png",
+      "sha256": "sha256:13e9780940c0234c77fa4674b279d4655bd41a63ad1342fdb112b5ea784c1e36",
+      "size": 1164,
+      "assetType": "image",
+      "groupId": "share"
+    },
+    "assets/share/og-brt.png": {
+      "path": "assets/share/og-brt.png",
+      "sha256": "sha256:5bd999520480a6a439eab34e90c835bf09aca7b45129d4bc84f4d011cd34c103",
+      "size": 3758526,
+      "assetType": "image",
+      "groupId": "share"
+    },
+    "assets/share/og.png": {
+      "path": "assets/share/og.png",
+      "sha256": "sha256:d1785cbb87cf6e6fdc55a8ea51955f1f3cea61be622d8ae560b47b1ae306f410",
+      "size": 634638,
+      "assetType": "image",
+      "groupId": "share"
+    }
+  }
+}

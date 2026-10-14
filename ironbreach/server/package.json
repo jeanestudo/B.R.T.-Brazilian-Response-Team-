@@ -1,0 +1,14 @@
+{
+  "name": "ironbreach-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs",
+    "db:migrate:leaderboard": "node leaderboard/migrate.mjs"
+  },
+  "dependencies": {
+    "mysql2": "^3.15.0",
+    "express": "^4.21.2",
+    "zod": "^4.1.12"
+  }
+}

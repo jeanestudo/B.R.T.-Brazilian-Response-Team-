@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>html,body{margin:0;background:#3a3d42}</style></head>
+<body>
+<script type="module">
+// Dev-only GLB preview: /tools/glbview.html?f=/assets/v3chars/operator.glb&views=front,side,back&anim=
+import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
+const q = new URLSearchParams(location.search)
+const views = (q.get('views') ?? 'front,side').split(',')
+const W = Number(q.get('w') ?? 640), H = Number(q.get('h') ?? 800)
+const r = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true })
+r.setSize(W * views.length, H); r.toneMapping = THREE.ACESFilmicToneMapping; r.outputColorSpace = THREE.SRGBColorSpace
+document.body.appendChild(r.domElement)
+const scene = new THREE.Scene(); scene.background = new THREE.Color('#3a3d42')
+scene.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), 0.04).texture
+scene.add(new THREE.HemisphereLight('#ffffff', '#444444', 1.2))
+const sun = new THREE.DirectionalLight('#ffffff', 2.2); sun.position.set(2, 4, 3); scene.add(sun)
+const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder)
+const g = await loader.loadAsync(q.get('f'))
+const root = g.scene; scene.add(root)
+if (q.get('anim')) {
+  const clip = g.animations.find(a => a.name === q.get('anim'))
+  if (clip) { const m = new THREE.AnimationMixer(root); m.clipAction(clip).play(); m.update(Number(q.get('t') ?? 0.3)) }
+}
+root.updateMatrixWorld(true)
+const box = new THREE.Box3().setFromObject(root); const size = box.getSize(new THREE.Vector3()); const c = box.getCenter(new THREE.Vector3())
+const s = Math.max(size.y, size.x, size.z) * 0.56
+const cam = new THREE.OrthographicCamera(-s * W / H, s * W / H, s, -s, 0.01, 100)
+r.setScissorTest(true)
+views.forEach((v, i) => {
+  const d = { front: [0, 0, 1], back: [0, 0, -1], side: [1, 0, 0], left: [-1, 0, 0], top: [0, 1, 0.001], q: [0.7, 0.3, 0.7] }[v]
+  cam.position.set(c.x + d[0] * 10, c.y + d[1] * 10, c.z + d[2] * 10); cam.lookAt(c)
+  r.setViewport(i * W, 0, W, H); r.setScissor(i * W, 0, W, H); r.render(scene, cam)
+})
+window.__info = { size: size.toArray(), center: c.toArray(), anims: g.animations.map(a => a.name), meshes: (() => { let n = 0, t = 0; root.traverse(o => { if (o.isMesh) { n++; t += (o.geometry.index?.count ?? o.geometry.attributes.position.count) / 3 } }); return { n, tris: Math.round(t) } })() }
+document.title = 'done'
+</script>
+</body></html>

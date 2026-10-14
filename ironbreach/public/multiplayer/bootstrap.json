@@ -1,0 +1,6 @@
+{
+  "build": "brt-v1",
+  "status": "unavailable",
+  "signalingUrl": null,
+  "message": "O lobby por convite será ativado quando o servidor autoritativo estiver alojado."
+}
